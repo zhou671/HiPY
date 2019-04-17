@@ -39,3 +39,7 @@ Here are some features of HiPY:
 -Database: Mango DB
 
 -Front End: Angular.js + HTML5
+
+-Authentication: Firebase Authentication
+
+-Server: Node.js
