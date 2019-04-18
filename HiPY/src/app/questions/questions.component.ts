@@ -10,12 +10,17 @@ import { Observable } from "rxjs";
   styleUrls: ["./questions.component.css"]
 })
 export class QuestionsComponent implements OnInit {
-  docuemnt: any;
+  title: String;
 
   constructor(public qs: QuestionService) {}
-
   ngOnInit() {
-    //this.document = this.qs.getDocument();
-    this.qs.getDocument().subscribe(doc => console.log(doc.payload.data()));
+    //this.qs.getDocument().subscribe(doc => console.log(doc.payload.data()));
+    this.qs.getDocument().subscribe(doc => this.set(doc));
+  }
+
+  set(doc) {
+    console.log(doc.payload.data());
+    this.title = doc.payload.data().title;
+    console.log(this.title);
   }
 }
