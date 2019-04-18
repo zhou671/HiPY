@@ -10,7 +10,8 @@ import { Observable } from "rxjs";
   styleUrls: ["./questions.component.css"]
 })
 export class QuestionsComponent implements OnInit {
-  title: String;
+  mytitle: String;
+  myDescription: String;
 
   constructor(public qs: QuestionService) {}
   ngOnInit() {
@@ -19,8 +20,9 @@ export class QuestionsComponent implements OnInit {
   }
 
   set(doc) {
-    console.log(doc.payload.data());
-    this.title = doc.payload.data().title;
-    console.log(this.title);
+    this.mytitle = doc.payload.data().title;
+    this.myDescription = doc.payload.data().description;
+    const output = document.querySelector("#xyz");
+    output.innerText = this.myDescription;
   }
 }
