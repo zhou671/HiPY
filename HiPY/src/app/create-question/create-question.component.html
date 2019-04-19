@@ -1,3 +1,25 @@
 <p>
   create-question works!
 </p>
+
+<div>
+  <label>
+    Question Title
+    <input #qTitle />
+  </label>
+
+  <label>
+    Question Description
+    <input #qDesc />
+  </label>
+
+  <a routerLink="/questions">
+    <button
+      (click)="
+        add(qTitle.value, qDesc.value); qTitle.value = ''; qDesc.value = ''
+      "
+    >
+      Submit
+    </button>
+  </a>
+</div>

@@ -1,18 +1,20 @@
-<p>
-  questions works!
-</p>
-
 <h1 id="xyz">XYZ</h1>
 
 <h2>My Questions</h2>
 <ul>
   <li *ngFor="let question of myQuestions">
     <a routerLink="/details/{{ question.id }}">
-      {{ question.id }}
+      Question Title: {{ question.title }}
       <br />
-      {{ question.title }}
-      <br />
-      {{ question.description }}
+      Question Description: {{ question.description }}
     </a>
   </li>
 </ul>
+
+<div>
+  <a routerLink="/create">
+    <button>
+      add a Question
+    </button>
+  </a>
+</div>

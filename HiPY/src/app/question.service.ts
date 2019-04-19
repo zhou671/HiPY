@@ -18,11 +18,30 @@ export class QuestionService {
     return this.afs.collection<any>("questions").snapshotChanges();
   }
 
+  getQuestion(questionID: string) {
+    return this.afs
+      .collection<any>("questions")
+      .doc<any>(questionID)
+      .snapshotChanges();
+  }
+
   getAnswers(questionID: string) {
     return this.afs
       .collection<any>("questions")
       .doc<any>(questionID)
       .collection<any>("answers")
       .snapshotChanges();
+  }
+
+  addQuestion(title: string, description: string) {
+    this.afs
+      .collection<any>("questions")
+      .add({ title: title, description: description })
+      .then(function() {
+        console.log("Status saved!");
+      })
+      .catch(function(error) {
+        console.log("Got an error: ", error);
+      });
   }
 }

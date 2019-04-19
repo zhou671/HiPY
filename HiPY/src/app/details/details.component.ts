@@ -14,6 +14,7 @@ import { Location } from "@angular/common";
 })
 export class DetailsComponent implements OnInit {
   //@Input() selectedQuestion: Question;
+  myQuestion: Question;
   myAnswers: Answer[];
 
   constructor(
@@ -24,7 +25,9 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     this.myAnswers = [];
+    this.myQuestion = {};
     const questionNumber = this.route.snapshot.paramMap.get("id");
+    this.qs.getQuestion(questionNumber).subscribe(ret => this.setQuestion(ret));
     this.qs.getAnswers(questionNumber).subscribe(ret => this.setAnswer(ret));
   }
 
@@ -36,5 +39,11 @@ export class DetailsComponent implements OnInit {
       this.myAnswers.push({ user, response });
       console.log(this.myAnswers[i]);
     }
+  }
+
+  setQuestion(myquestion) {
+    this.myQuestion.id = myquestion.payload.id;
+    this.myQuestion.title = myquestion.payload.data().title;
+    this.myQuestion.description = myquestion.payload.data().description;
   }
 }
