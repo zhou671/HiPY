@@ -13,7 +13,6 @@ import { Location } from "@angular/common";
   styleUrls: ["./details.component.css"]
 })
 export class DetailsComponent implements OnInit {
-  //@Input() selectedQuestion: Question;
   myQuestion: Question;
   myAnswers: Answer[];
 
@@ -25,7 +24,7 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     this.myAnswers = [];
-    this.myQuestion = {};
+    this.myQuestion = { id: "", title: "", description: "" };
     const questionNumber = this.route.snapshot.paramMap.get("id");
     this.qs.getQuestion(questionNumber).subscribe(ret => this.setQuestion(ret));
     this.qs.getAnswers(questionNumber).subscribe(ret => this.setAnswer(ret));

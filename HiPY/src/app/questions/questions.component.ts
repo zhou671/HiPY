@@ -18,13 +18,7 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit() {
     this.myQuestions = [];
-    this.qs.getDocument().subscribe(ret => this.setDocument(ret));
     this.qs.getAllQuestions().subscribe(ret => this.setCollection(ret));
-  }
-
-  setDocument(mydoc) {
-    const output = document.querySelector("#xyz") as HTMLElement;
-    output.innerText = mydoc.payload.data().description;
   }
 
   setCollection(mycollect) {
@@ -32,6 +26,7 @@ export class QuestionsComponent implements OnInit {
       var id = mycollect[i].payload.doc.id;
       var title = mycollect[i].payload.doc.data().title;
       var description = mycollect[i].payload.doc.data().description;
+
       this.myQuestions.push({ id, title, description });
       console.log(this.myQuestions[i]);
     }

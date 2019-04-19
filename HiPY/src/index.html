@@ -7,73 +7,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-
-    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
   </head>
   <body>
-    <h1 id="showData">showData:</h1>
-    <input type="textField" id="latestData" />
-    <button id="saveButton">Save</button>
-    <button id="loadButton">Load</button>
-
-    <script>
-      var config = {
-        apiKey: "AIzaSyDuqp8tPpViDT0OciQxzHNkknAqJg9IDbk",
-        authDomain: "hipy-ffa6a.firebaseapp.com",
-        databaseURL: "https://hipy-ffa6a.firebaseio.com",
-        projectId: "hipy-ffa6a",
-        storageBucket: "hipy-ffa6a.appspot.com",
-        messagingSenderId: "117195261502"
-      };
-      firebase.initializeApp(config);
-
-      var firebase = firebase.firestore();
-      const docRef = firebase.doc("questions/question1");
-      const outputHeader = document.querySelector("#showData");
-      const inputTextField = document.querySelector("#latestData");
-      const saveButton = document.querySelector("#saveButton");
-      const loadButton = document.querySelector("#loadButton");
-      saveButton.addEventListener("click", function() {
-        const textToSave = inputTextField.value;
-        console.log("I am going to save " + textToSave + "to Firebase");
-        docRef
-          .set({ title: "Hello", description: textToSave }, { merge: true })
-          .then(function() {
-            console.log("Status saved!");
-          })
-          .catch(function(error) {
-            console.log("Got an error: ", error);
-          });
-      });
-
-      loadButton.addEventListener("click", function() {
-        docRef
-          .get()
-          .then(function(doc) {
-            if (doc && doc.exists) {
-              const myData = doc.data();
-              outputHeader.innerText = "myData: " + myData.description;
-            }
-          })
-          .catch(function(error) {
-            console.log("Got an error: ", error);
-          });
-      });
-
-      getRealtimeUpdates = function() {
-        docRef.onSnapshot(function(doc) {
-          if (doc && doc.exists) {
-            const myData = doc.data();
-            outputHeader.innerText = "myData: " + myData.description;
-          }
-        });
-      };
-
-      getRealtimeUpdates();
-    </script>
-
     <app-root></app-root>
   </body>
 </html>

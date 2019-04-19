@@ -1,4 +1,6 @@
 <h2>My Question</h2>
+{{ myQuestion.id }}
+<br />
 {{ myQuestion.title }}
 <br />
 {{ myQuestion.description }}
@@ -11,3 +13,9 @@
     {{ answer.response }}
   </li>
 </ul>
+
+<a routerLink="/create-answer/{{ myQuestion.id }}">
+  <button>
+    Add answer
+  </button>
+</a>

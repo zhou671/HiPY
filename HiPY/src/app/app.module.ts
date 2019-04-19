@@ -9,13 +9,17 @@ import { environment } from "../environments/environment";
 import { QuestionsComponent } from "./questions/questions.component";
 import { DetailsComponent } from "./details/details.component";
 import { CreateQuestionComponent } from "./create-question/create-question.component";
+import { CreateAnswerComponent } from "./create-answer/create-answer.component";
+import { SearchComponent } from "./search/search.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionsComponent,
     DetailsComponent,
-    CreateQuestionComponent
+    CreateQuestionComponent,
+    CreateAnswerComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

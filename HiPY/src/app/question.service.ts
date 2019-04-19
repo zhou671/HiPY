@@ -10,10 +10,6 @@ import { map, switchMap } from "rxjs/operators";
 export class QuestionService {
   constructor(private afs: AngularFirestore, private router: Router) {}
 
-  getDocument() {
-    return this.afs.doc<any>("questions/question1").snapshotChanges();
-  }
-
   getAllQuestions() {
     return this.afs.collection<any>("questions").snapshotChanges();
   }
@@ -43,5 +39,25 @@ export class QuestionService {
       .catch(function(error) {
         console.log("Got an error: ", error);
       });
+  }
+
+  addAnswer(questionID: string, user: string, response: string) {
+    this.afs
+      .collection<any>("questions")
+      .doc<any>(questionID)
+      .collection<any>("answers")
+      .add({ user: user, response: response })
+      .then(function() {
+        console.log("Status saved!");
+      })
+      .catch(function(error) {
+        console.log("Got an error: ", error);
+      });
+  }
+
+  getSearchedQuestions(title: string) {
+    return this.afs.collection<any>("questions", ref =>
+      ref.where("title", "==", title)
+    );
   }
 }

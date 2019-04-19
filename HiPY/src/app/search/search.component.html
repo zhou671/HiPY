@@ -1,0 +1,21 @@
+<p>
+  search works!
+</p>
+
+<div>
+  <label> Search by Title <input #qTitle /> </label>
+
+  <button (click)="prepareSearch(qTitle.value); qTitle.value = ''">
+    Search
+  </button>
+</div>
+
+<ul>
+  <li *ngFor="let question of searchedQuestions">
+    <a routerLink="/details/{{ question.id }}">
+      title: {{ question.title }}
+      <br />
+      description: {{ question.description }}
+    </a>
+  </li>
+</ul>
