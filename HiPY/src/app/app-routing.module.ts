@@ -5,13 +5,17 @@ import { CreateAnswerComponent } from "./create-answer/create-answer.component";
 import { DetailsComponent } from "./details/details.component";
 import { QuestionsComponent } from "./questions/questions.component";
 import { SearchComponent } from "./search/search.component";
+import { EditAnswerComponent } from "./edit-answer/edit-answer.component";
+import { EditQuestionComponent } from "./edit-question/edit-question.component";
 
 const routes: Routes = [
   { path: "questions", component: QuestionsComponent },
   { path: "create", component: CreateQuestionComponent },
   { path: "create-answer/:id", component: CreateAnswerComponent },
   { path: "details/:id", component: DetailsComponent },
-  { path: "search", component: SearchComponent }
+  { path: "search", component: SearchComponent },
+  { path: "edit-answer/:qid/:aid", component: EditAnswerComponent },
+  { path: "edit-question/:id", component: EditQuestionComponent }
 ];
 
 @NgModule({

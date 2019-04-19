@@ -1,0 +1,16 @@
+<p>
+  edit-answer works!
+</p>
+
+<h2>Editing Answer</h2>
+<h2>{{ myAnswer.response }}</h2>
+
+<div>
+  <label>
+    Answer
+    <input [(ngModel)]="myAnswer.response" placeholder="response" />
+  </label>
+</div>
+
+<button (click)="goBack()">go back</button>
+<button (click)="save()">save</button>

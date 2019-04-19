@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
   }
 
   prepareSearch(qTitle: string) {
-    console.log(qTitle);
+    //console.log(qTitle);
     var collecRef = this.qs.getSearchedQuestions(qTitle);
     collecRef.get().subscribe(ret => this.setQuestion(ret));
   }
@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
       var title = query.docs[i].data().title;
       var description = query.docs[i].data().description;
       this.searchedQuestions.push({ id, title, description });
-      console.log(this.searchedQuestions[i]);
+      //console.log(this.searchedQuestions[i]);
     }
   }
 }

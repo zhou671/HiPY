@@ -11,6 +11,9 @@ import { DetailsComponent } from "./details/details.component";
 import { CreateQuestionComponent } from "./create-question/create-question.component";
 import { CreateAnswerComponent } from "./create-answer/create-answer.component";
 import { SearchComponent } from "./search/search.component";
+import { EditAnswerComponent } from "./edit-answer/edit-answer.component";
+import { EditQuestionComponent } from "./edit-question/edit-question.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,14 +22,17 @@ import { SearchComponent } from "./search/search.component";
     DetailsComponent,
     CreateQuestionComponent,
     CreateAnswerComponent,
-    SearchComponent
+    SearchComponent,
+    EditAnswerComponent,
+    EditQuestionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

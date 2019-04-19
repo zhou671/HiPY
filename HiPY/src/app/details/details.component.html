@@ -4,6 +4,11 @@
 {{ myQuestion.title }}
 <br />
 {{ myQuestion.description }}
+<a routerLink="/edit-question/{{ myQuestion.id }}">
+  <button class="edit" title="edit question">
+    edit
+  </button>
+</a>
 
 <h2>My Answers</h2>
 <ul>
@@ -11,6 +16,16 @@
     {{ answer.user }}
     <br />
     {{ answer.response }}
+
+    <button class="delete" title="delete answer" (click)="deleteanswer(answer)">
+      delete
+    </button>
+
+    <a routerLink="/edit-answer/{{ myQuestion.id }}/{{ answer.id }}">
+      <button class="edit" title="edit answer">
+        edit
+      </button>
+    </a>
   </li>
 </ul>
 

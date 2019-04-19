@@ -31,12 +31,11 @@ export class DetailsComponent implements OnInit {
   }
 
   setAnswer(myanswer) {
-    console.log(myanswer.length);
     for (var i = 0; i < myanswer.length; i++) {
+      var id = myanswer[i].payload.doc.id;
       var user = myanswer[i].payload.doc.data().user;
       var response = myanswer[i].payload.doc.data().response;
-      this.myAnswers.push({ user, response });
-      console.log(this.myAnswers[i]);
+      this.myAnswers.push({ id, user, response });
     }
   }
 
@@ -44,5 +43,9 @@ export class DetailsComponent implements OnInit {
     this.myQuestion.id = myquestion.payload.id;
     this.myQuestion.title = myquestion.payload.data().title;
     this.myQuestion.description = myquestion.payload.data().description;
+  }
+
+  deleteanswer(answer) {
+    this.qs.deleteAnswer(this.myQuestion.id, answer.id);
   }
 }

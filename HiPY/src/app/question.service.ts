@@ -29,6 +29,15 @@ export class QuestionService {
       .snapshotChanges();
   }
 
+  getAnswer(questionID: string, answerID: string) {
+    return this.afs
+      .collection<any>("questions")
+      .doc<any>(questionID)
+      .collection<any>("answers")
+      .doc<any>(answerID)
+      .snapshotChanges();
+  }
+
   addQuestion(title: string, description: string) {
     this.afs
       .collection<any>("questions")
@@ -59,5 +68,35 @@ export class QuestionService {
     return this.afs.collection<any>("questions", ref =>
       ref.where("title", "==", title)
     );
+  }
+
+  deleteAnswer(questionID: string, answerID: string) {
+    this.afs
+      .collection("questions")
+      .doc(questionID)
+      .collection("answers")
+      .doc(answerID)
+      .delete()
+      .then(function() {
+        console.log("Document successfully deleted!");
+      })
+      .catch(function(error) {
+        console.error("Error removing document: ", error);
+      });
+  }
+
+  editAnswer(questionNumber: string, answerNumber: string, response: string) {
+    this.afs
+      .collection<any>("questions")
+      .doc<any>(questionNumber)
+      .collection<any>("answers")
+      .doc<any>(answerNumber)
+      .update({ response: response })
+      .then(function() {
+        console.log("Status saved!");
+      })
+      .catch(function(error) {
+        console.log("Got an error: ", error);
+      });
   }
 }
