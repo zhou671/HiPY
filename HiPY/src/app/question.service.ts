@@ -99,4 +99,17 @@ export class QuestionService {
         console.log("Got an error: ", error);
       });
   }
+
+  editQuestion(questionNumber: string, title: string, description: string) {
+    this.afs
+      .collection<any>("questions")
+      .doc<any>(questionNumber)
+      .update({ title: title, description: description })
+      .then(function() {
+        console.log("Status saved!");
+      })
+      .catch(function(error) {
+        console.log("Got an error: ", error);
+      });
+  }
 }

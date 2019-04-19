@@ -1,3 +1,22 @@
 <p>
   edit-question works!
 </p>
+
+<h2>Editing Question</h2>
+<h2>{{ myQuestion.title }}</h2>
+<h2>{{ myQuestion.description }}</h2>
+
+<div>
+  <label>
+    Title
+    <input [(ngModel)]="myQuestion.title" placeholder="title" />
+  </label>
+
+  <label>
+    Description
+    <input [(ngModel)]="myQuestion.description" placeholder="description" />
+  </label>
+</div>
+
+<button (click)="goBack()">go back</button>
+<button (click)="save()">save</button>
