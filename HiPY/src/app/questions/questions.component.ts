@@ -3,6 +3,8 @@ import { QuestionService } from "../question.service";
 import { ActivatedRoute } from "@angular/router";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
+import { Question } from "../question";
+import { Answer } from "../answer";
 
 @Component({
   selector: "app-questions",
@@ -10,10 +12,14 @@ import { Observable } from "rxjs";
   styleUrls: ["./questions.component.css"]
 })
 export class QuestionsComponent implements OnInit {
+  myQuestions: Question[];
+
   constructor(public qs: QuestionService) {}
+
   ngOnInit() {
+    this.myQuestions = [];
     this.qs.getDocument().subscribe(ret => this.setDocument(ret));
-    this.qs.getAllDocuments().subscribe(ret => this.setCollection(ret));
+    this.qs.getAllQuestions().subscribe(ret => this.setCollection(ret));
   }
 
   setDocument(mydoc) {
@@ -22,17 +28,12 @@ export class QuestionsComponent implements OnInit {
   }
 
   setCollection(mycollect) {
-    console.log(mycollect.length);
-    console.log(mycollect[0].payload.doc.id);
-    console.log(mycollect[0].payload.doc.data());
-    console.log(mycollect[1].payload.doc.id);
-    console.log(mycollect[1].payload.doc.data());
-    this.qs
-      .getAnswers(mycollect[0].payload.doc.id)
-      .subscribe(ret => this.setAnswer(ret));
-  }
-
-  setAnswer(myanswer) {
-    console.log(myanswer[0].payload.doc.data());
+    for (var i = 0; i < mycollect.length; i++) {
+      var id = mycollect[i].payload.doc.id;
+      var title = mycollect[i].payload.doc.data().title;
+      var description = mycollect[i].payload.doc.data().description;
+      this.myQuestions.push({ id, title, description });
+      console.log(this.myQuestions[i]);
+    }
   }
 }

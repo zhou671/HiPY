@@ -6,9 +6,13 @@
 
 <h2>My Questions</h2>
 <ul>
-  <li *ngFor="let question of questions">
-    {{ question.ID }}
-    {{ question.title }}
-    {{ question.description }}
+  <li *ngFor="let question of myQuestions">
+    <a routerLink="/details/{{ question.id }}">
+      {{ question.id }}
+      <br />
+      {{ question.title }}
+      <br />
+      {{ question.description }}
+    </a>
   </li>
 </ul>

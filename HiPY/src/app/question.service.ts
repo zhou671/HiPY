@@ -14,7 +14,7 @@ export class QuestionService {
     return this.afs.doc<any>("questions/question1").snapshotChanges();
   }
 
-  getAllDocuments() {
+  getAllQuestions() {
     return this.afs.collection<any>("questions").snapshotChanges();
   }
 
