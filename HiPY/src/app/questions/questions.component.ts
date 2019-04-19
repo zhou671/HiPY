@@ -28,7 +28,7 @@ export class QuestionsComponent implements OnInit {
       var description = mycollect[i].payload.doc.data().description;
 
       this.myQuestions.push({ id, title, description });
-      console.log(this.myQuestions[i]);
+      //console.log(this.myQuestions[i]);
     }
   }
 }

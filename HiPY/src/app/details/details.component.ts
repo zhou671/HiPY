@@ -6,6 +6,7 @@ import { Observable } from "rxjs";
 import { Question } from "../question";
 import { Answer } from "../answer";
 import { Location } from "@angular/common";
+import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-details",
@@ -19,6 +20,7 @@ export class DetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private qs: QuestionService,
+    private afs: AngularFirestore,
     private location: Location
   ) {}
 
@@ -46,6 +48,25 @@ export class DetailsComponent implements OnInit {
   }
 
   deleteanswer(answer) {
-    this.qs.deleteAnswer(this.myQuestion.id, answer.id);
+    //this.qs.deleteAnswer(this.myQuestion.id, answer.id);
+    this.deleteAnswerX(this.myQuestion.id, answer.id, this);
+  }
+
+  deleteAnswerX(questionID: string, answerID: string, self) {
+    document.getElementById("answerlist").style.display = "none";
+
+    this.afs
+      .collection("questions")
+      .doc(questionID)
+      .collection("answers")
+      .doc(answerID)
+      .delete()
+      .then(function() {
+        console.log("Document successfully deleted!");
+        window.location.reload();
+      })
+      .catch(function(error) {
+        console.error("Error removing document: ", error);
+      });
   }
 }
