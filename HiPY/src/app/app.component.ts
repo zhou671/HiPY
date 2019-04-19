@@ -8,6 +8,5 @@ import { AngularFirestore } from "@angular/fire/firestore";
 })
 export class AppComponent {
   title = "HiPY";
-  questions: Observable<any[]>;
   constructor(db: AngularFirestore) {}
 }

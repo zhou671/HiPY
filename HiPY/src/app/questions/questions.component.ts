@@ -10,19 +10,29 @@ import { Observable } from "rxjs";
   styleUrls: ["./questions.component.css"]
 })
 export class QuestionsComponent implements OnInit {
-  mytitle: String;
-  myDescription: String;
-
   constructor(public qs: QuestionService) {}
   ngOnInit() {
-    //this.qs.getDocument().subscribe(doc => console.log(doc.payload.data()));
-    this.qs.getDocument().subscribe(doc => this.set(doc));
+    this.qs.getDocument().subscribe(ret => this.setDocument(ret));
+    this.qs.getAllDocuments().subscribe(ret => this.setCollection(ret));
   }
 
-  set(doc) {
-    this.mytitle = doc.payload.data().title;
-    this.myDescription = doc.payload.data().description;
-    const output = document.querySelector("#xyz");
-    output.innerText = this.myDescription;
+  setDocument(mydoc) {
+    const output = document.querySelector("#xyz") as HTMLElement;
+    output.innerText = mydoc.payload.data().description;
+  }
+
+  setCollection(mycollect) {
+    console.log(mycollect.length);
+    console.log(mycollect[0].payload.doc.id);
+    console.log(mycollect[0].payload.doc.data());
+    console.log(mycollect[1].payload.doc.id);
+    console.log(mycollect[1].payload.doc.data());
+    this.qs
+      .getAnswers(mycollect[0].payload.doc.id)
+      .subscribe(ret => this.setAnswer(ret));
+  }
+
+  setAnswer(myanswer) {
+    console.log(myanswer[0].payload.doc.data());
   }
 }

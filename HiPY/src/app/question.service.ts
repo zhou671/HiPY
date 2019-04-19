@@ -13,4 +13,16 @@ export class QuestionService {
   getDocument() {
     return this.afs.doc<any>("questions/question1").snapshotChanges();
   }
+
+  getAllDocuments() {
+    return this.afs.collection<any>("questions").snapshotChanges();
+  }
+
+  getAnswers(questionID: string) {
+    return this.afs
+      .collection<any>("questions")
+      .doc<any>(questionID)
+      .collection<any>("answers")
+      .snapshotChanges();
+  }
 }

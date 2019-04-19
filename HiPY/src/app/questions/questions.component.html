@@ -3,3 +3,12 @@
 </p>
 
 <h1 id="xyz">XYZ</h1>
+
+<h2>My Questions</h2>
+<ul>
+  <li *ngFor="let question of questions">
+    {{ question.ID }}
+    {{ question.title }}
+    {{ question.description }}
+  </li>
+</ul>
