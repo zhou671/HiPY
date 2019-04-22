@@ -32,7 +32,8 @@ export class SearchComponent implements OnInit {
       var id = query.docs[i].id;
       var title = query.docs[i].data().title;
       var description = query.docs[i].data().description;
-      this.searchedQuestions.push({ id, title, description });
+      var user = query.docs[i].data().user;
+      this.searchedQuestions.push({ id, title, description, user });
       //console.log(this.searchedQuestions[i]);
     }
   }

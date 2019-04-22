@@ -30,7 +30,7 @@ export class DetailsComponent implements OnInit {
     this.currentUser = window.localStorage.getItem("emailForSignIn");
 
     this.myAnswers = [];
-    this.myQuestion = { id: "", title: "", description: "" };
+    this.myQuestion = { id: "", title: "", description: "", user: "" };
     const questionNumber = this.route.snapshot.paramMap.get("id");
     this.qs.getQuestion(questionNumber).subscribe(ret => this.setQuestion(ret));
     this.qs.getAnswers(questionNumber).subscribe(ret => this.setAnswer(ret));
@@ -49,6 +49,7 @@ export class DetailsComponent implements OnInit {
     this.myQuestion.id = myquestion.payload.id;
     this.myQuestion.title = myquestion.payload.data().title;
     this.myQuestion.description = myquestion.payload.data().description;
+    this.myQuestion.user = myquestion.payload.data().user;
   }
 
   deleteanswer(answer) {
