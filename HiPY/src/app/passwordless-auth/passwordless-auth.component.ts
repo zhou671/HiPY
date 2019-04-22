@@ -1,21 +1,5 @@
-/*
-import { Component, OnInit } from "@angular/core";
-
-@Component({
-  selector: "app-passwordless-auth",
-  templateUrl: "./passwordless-auth.component.html",
-  styleUrls: ["./passwordless-auth.component.css"]
-})
-export class PasswordlessAuthComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
-*/
-
 import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
-//import { AngularFireAuth } from "angularfire2/auth";
 import { Router } from "@angular/router";
 
 @Component({
@@ -44,7 +28,6 @@ export class PasswordlessAuthComponent implements OnInit {
 
   async sendEmailLink() {
     const actionCodeSettings = {
-      // Your redirect URL
       url: "http://localhost:4200/login",
       handleCodeInApp: true
     };
@@ -73,7 +56,7 @@ export class PasswordlessAuthComponent implements OnInit {
 
         // Signin user and remove the email localStorage
         const result = await this.afAuth.auth.signInWithEmailLink(email, url);
-        window.localStorage.removeItem("emailForSignIn");
+        //window.localStorage.removeItem("emailForSignIn");
       }
     } catch (err) {
       this.errorMessage = err.message;

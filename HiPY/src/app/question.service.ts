@@ -85,7 +85,13 @@ export class QuestionService {
       });
   }
 
-  editAnswer(questionNumber: string, answerNumber: string, response: string) {
+  editAnswer(
+    questionNumber: string,
+    answerNumber: string,
+    user: string,
+    response: string
+  ) {
+    //if (user == window.localStorage.getItem("emailForSignIn")) {
     this.afs
       .collection<any>("questions")
       .doc<any>(questionNumber)
@@ -98,6 +104,7 @@ export class QuestionService {
       .catch(function(error) {
         console.log("Got an error: ", error);
       });
+    //}
   }
 
   editQuestion(questionNumber: string, title: string, description: string) {

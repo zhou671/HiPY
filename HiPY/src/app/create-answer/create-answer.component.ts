@@ -20,6 +20,9 @@ export class CreateAnswerComponent implements OnInit {
     if (!response) {
       return;
     }
+
+    user = window.localStorage.getItem("emailForSignIn");
+
     this.qs.addAnswer(this.questionNumber, user, response);
   }
 }

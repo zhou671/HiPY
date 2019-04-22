@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: "search", component: SearchComponent },
   { path: "edit-answer/:qid/:aid", component: EditAnswerComponent },
   { path: "edit-question/:id", component: EditQuestionComponent },
-  { path: "login", component: PasswordlessAuthComponent }
+  { path: "login", component: PasswordlessAuthComponent },
+  { path: "", redirectTo: "login", pathMatch: "full" }
 ];
 
 @NgModule({

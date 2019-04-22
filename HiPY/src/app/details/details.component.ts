@@ -16,6 +16,7 @@ import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
 export class DetailsComponent implements OnInit {
   myQuestion: Question;
   myAnswers: Answer[];
+  currentUser: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,9 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log(window.localStorage.getItem("emailForSignIn"));
+    this.currentUser = window.localStorage.getItem("emailForSignIn");
+
     this.myAnswers = [];
     this.myQuestion = { id: "", title: "", description: "" };
     const questionNumber = this.route.snapshot.paramMap.get("id");

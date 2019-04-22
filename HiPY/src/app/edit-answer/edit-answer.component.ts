@@ -45,6 +45,7 @@ export class EditAnswerComponent implements OnInit {
     this.qs.editAnswer(
       this.questionNumber,
       this.answerNumber,
+      this.myAnswer.user,
       this.myAnswer.response
     );
     this.goBack();

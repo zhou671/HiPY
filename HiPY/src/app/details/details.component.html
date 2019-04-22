@@ -1,4 +1,4 @@
-<h2>My Question</h2>
+<h2>Question</h2>
 {{ myQuestion.id }}
 <br />
 {{ myQuestion.title }}
@@ -10,19 +10,28 @@
   </button>
 </a>
 
-<h2>My Answers</h2>
+<h2>Answers</h2>
 <ul id="answerlist">
   <li *ngFor="let answer of myAnswers">
     {{ answer.user }}
     <br />
     {{ answer.response }}
 
-    <button class="delete" title="delete answer" (click)="deleteanswer(answer)">
+    <button
+      *ngIf="answer.user === currentUser"
+      class="delete"
+      title="delete answer"
+      (click)="deleteanswer(answer)"
+    >
       delete
     </button>
 
     <a routerLink="/edit-answer/{{ myQuestion.id }}/{{ answer.id }}">
-      <button class="edit" title="edit answer">
+      <button
+        *ngIf="answer.user === currentUser"
+        class="edit"
+        title="edit answer"
+      >
         edit
       </button>
     </a>

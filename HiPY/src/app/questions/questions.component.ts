@@ -17,6 +17,7 @@ export class QuestionsComponent implements OnInit {
   constructor(public qs: QuestionService) {}
 
   ngOnInit() {
+    console.log(window.localStorage.getItem("emailForSignIn"));
     this.myQuestions = [];
     this.qs.getAllQuestions().subscribe(ret => this.setCollection(ret));
   }
