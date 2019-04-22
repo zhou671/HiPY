@@ -38,10 +38,10 @@ export class QuestionService {
       .snapshotChanges();
   }
 
-  addQuestion(title: string, description: string) {
+  addQuestion(user: string, title: string, description: string) {
     this.afs
       .collection<any>("questions")
-      .add({ title: title, description: description })
+      .add({ user: user, title: title, description: description })
       .then(function() {
         console.log("Status saved!");
       })

@@ -5,12 +5,16 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <!--The content below is only a placeholder and can be replaced.-->
+<nav *ngIf="!(user | async)">
+  <a routerLink="/login">LogIn</a>
+</nav>
 
-<nav>
-  
-  <a routerLink="/questions">Main Page</a>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <a routerLink="/login">Login</a>
+<nav *ngIf="(user | async)">
+  <a routerLink="/questions">Questions(Testing)</a>
+</nav>
+
+<nav *ngIf="(user | async)">
+  <a routerLink="/login">Account</a>
 </nav>
 
 

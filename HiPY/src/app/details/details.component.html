@@ -9,8 +9,15 @@
 {{ myQuestion.title }}
 <br />
 {{ myQuestion.description }}
+<br />
+{{ myQuestion.user }}
+
 <a routerLink="/edit-question/{{ myQuestion.id }}">
-  <button class="edit" title="edit question">
+  <button
+    *ngIf="myQuestion.user === currentUser"
+    class="edit"
+    title="edit question"
+  >
     edit
   </button>
 </a>

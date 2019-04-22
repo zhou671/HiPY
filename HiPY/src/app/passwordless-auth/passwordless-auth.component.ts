@@ -28,7 +28,8 @@ export class PasswordlessAuthComponent implements OnInit {
 
   async sendEmailLink() {
     const actionCodeSettings = {
-      url: "http://localhost:4200/login",
+      url: "https://hipy-ffa6a.firebaseapp.com/login",
+      //url: "http://localhost:4200/login",
       handleCodeInApp: true
     };
 
@@ -64,6 +65,7 @@ export class PasswordlessAuthComponent implements OnInit {
   }
 
   logout() {
+    window.localStorage.setItem("emailForSignIn", "anonymous");
     return this.afAuth.auth.signOut();
   }
 }

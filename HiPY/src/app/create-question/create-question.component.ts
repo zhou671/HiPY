@@ -12,10 +12,12 @@ export class CreateQuestionComponent implements OnInit {
 
   ngOnInit() {}
 
-  add(title: string, description: string): void {
+  add(user: string, title: string, description: string): void {
     if (!title) {
       return;
     }
-    this.qs.addQuestion(title, description);
+    user = window.localStorage.getItem("emailForSignIn");
+
+    this.qs.addQuestion(user, title, description);
   }
 }
