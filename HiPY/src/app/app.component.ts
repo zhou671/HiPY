@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
   selector: "app-root",
@@ -8,5 +9,9 @@ import { AngularFirestore } from "@angular/fire/firestore";
 })
 export class AppComponent {
   title = "HiPY";
-  constructor(db: AngularFirestore) {}
+  user;
+  constructor(db: AngularFirestore, public afAuth: AngularFireAuth) {}
+  ngOnInit() {
+    this.user = this.afAuth.authState;
+  }
 }

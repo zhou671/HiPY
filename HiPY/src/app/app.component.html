@@ -1,5 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav>
+<nav *ngIf="!(user | async)">
+  <a routerLink="/login">LogIn</a>
+</nav>
+
+<nav *ngIf="(user | async)">
+  <a routerLink="/questions">Questions(Testing)</a>
+</nav>
+
+<nav *ngIf="(user | async)">
   <a routerLink="/login">Account</a>
 </nav>
 
