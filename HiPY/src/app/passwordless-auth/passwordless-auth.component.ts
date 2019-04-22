@@ -64,6 +64,7 @@ export class PasswordlessAuthComponent implements OnInit {
   }
 
   logout() {
+    window.localStorage.setItem("emailForSignIn", "anonymous");
     return this.afAuth.auth.signOut();
   }
 }
