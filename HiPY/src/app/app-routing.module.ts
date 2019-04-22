@@ -7,6 +7,7 @@ import { QuestionsComponent } from "./questions/questions.component";
 import { SearchComponent } from "./search/search.component";
 import { EditAnswerComponent } from "./edit-answer/edit-answer.component";
 import { EditQuestionComponent } from "./edit-question/edit-question.component";
+import { PasswordlessAuthComponent } from "./passwordless-auth/passwordless-auth.component";
 
 const routes: Routes = [
   { path: "questions", component: QuestionsComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: "details/:id", component: DetailsComponent },
   { path: "search", component: SearchComponent },
   { path: "edit-answer/:qid/:aid", component: EditAnswerComponent },
-  { path: "edit-question/:id", component: EditQuestionComponent }
+  { path: "edit-question/:id", component: EditQuestionComponent },
+  { path: "login", component: PasswordlessAuthComponent }
 ];
 
 @NgModule({
