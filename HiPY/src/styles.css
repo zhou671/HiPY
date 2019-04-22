@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*the color of the url when getting focus*/
+a {
+    color: black !important;
+  }
+a:hover {
+    color: black !important;
+}
+p {
+    color: white !important;
+   }
+h2{
+    color: white !important;
+}
+/* to remove the bullet from li*/
+ul
+{
+list-style-type: none;
+}
+body {
+    background-image: "assets/headPic.jpeg"!important;
+    background-color: #020302 !important;
+}
