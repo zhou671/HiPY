@@ -8,6 +8,7 @@ import { SearchComponent } from "./search/search.component";
 import { EditAnswerComponent } from "./edit-answer/edit-answer.component";
 import { EditQuestionComponent } from "./edit-question/edit-question.component";
 import { PasswordlessAuthComponent } from "./passwordless-auth/passwordless-auth.component";
+import { UserCenterComponent} from "./user-center/user-center.component";
 
 const routes: Routes = [
   { path: "questions", component: QuestionsComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: "edit-answer/:qid/:aid", component: EditAnswerComponent },
   { path: "edit-question/:id", component: EditQuestionComponent },
   { path: "login", component: PasswordlessAuthComponent },
-  { path: "", redirectTo: "login", pathMatch: "full" }
+  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "user-center", component: UserCenterComponent}
 ];
 
 @NgModule({

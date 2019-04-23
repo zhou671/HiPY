@@ -2,7 +2,7 @@
 
 /*the color of the url when getting focus*/
 a {
-    color: black !important;
+    color: grey !important;
   }
 a:hover {
     color: black !important;
@@ -20,5 +20,5 @@ list-style-type: none;
 }
 body {
     background-image: "assets/headPic.jpeg"!important;
-    background-color: #020302 !important;
+    background-color: #20360e71 !important;
 }

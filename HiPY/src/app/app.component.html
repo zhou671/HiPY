@@ -17,5 +17,9 @@
   <a routerLink="/login">Account</a>
 </nav>
 
+<nav *ngIf="(user | async)">
+  <a routerLink="/user-center">User-Center</a>
+</nav>
+
 
 <router-outlet></router-outlet>

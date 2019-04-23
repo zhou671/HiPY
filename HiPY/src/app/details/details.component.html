@@ -12,6 +12,14 @@
 <br />
 {{ myQuestion.user }}
 
+<button
+  class=""
+  title="follow this question"
+  (click)="addQues2User()"  
+>
+follow this question
+</button>
+
 <a routerLink="/edit-question/{{ myQuestion.id }}">
   <button
     *ngIf="myQuestion.user === currentUser"
@@ -28,6 +36,17 @@
     {{ answer.user }}
     <br />
     {{ answer.response }}
+    <br />
+    {{ answer.likes}}
+
+    <button
+      *ngIf="answer.user != currentUser"
+      class=""
+      title="likes this answer"
+      (click)="addlikes(answer)"
+    >
+      likes 
+     </button>
 
     <button
       *ngIf="answer.user === currentUser"

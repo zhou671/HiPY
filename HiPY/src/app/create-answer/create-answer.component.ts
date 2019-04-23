@@ -22,7 +22,7 @@ export class CreateAnswerComponent implements OnInit {
     }
 
     user = window.localStorage.getItem("emailForSignIn");
-
+    //console.log('user email is' + user);
     this.qs.addAnswer(this.questionNumber, user, response);
   }
 }

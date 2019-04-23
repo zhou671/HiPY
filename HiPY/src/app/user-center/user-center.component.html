@@ -1,0 +1,13 @@
+  <h2> Following Questions </h2>
+  <ul id="questionlist">
+    <li *ngFor="let question of myQuestions">
+      {{ question.title }}
+      <br />
+      {{ question.description }}
+
+      <a href="/details/{{ question.id }}">
+        <button> View </button>
+      </a>
+      <button (click)="deleteQues4User(question)"> Unfollow </button>
+    </li>
+  </ul>
