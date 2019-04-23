@@ -117,7 +117,7 @@ export class DetailsComponent implements OnInit {
   }
 
   deleteAnswerX(questionID: string, answerID: string, self) {
-    document.getElementById("answerlist").style.display = "none";
+    //document.getElementById("answerlist").style.display = "none";
 
     this.afs
       .collection("questions")
@@ -127,7 +127,7 @@ export class DetailsComponent implements OnInit {
       .delete()
       .then(function() {
         console.log("Document successfully deleted!");
-        window.location.reload();
+        //window.location.reload();
       })
       .catch(function(error) {
         console.error("Error removing document: ", error);
