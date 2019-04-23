@@ -2,7 +2,7 @@
 
 /*the color of the url when getting focus*/
 a {
-    color: black !important;
+    color: white !important;
   }
 a:hover {
     color: black !important;
