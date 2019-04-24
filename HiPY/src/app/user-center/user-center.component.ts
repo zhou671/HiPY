@@ -33,7 +33,12 @@ export class UserCenterComponent implements OnInit {
   ngOnInit() {
     console.log(window.localStorage.getItem("emailForSignIn"));
     this.newEmail = window.localStorage.getItem("emailForSignIn");
+    this.email = this.newEmail;
     this.myQuestions = [];
+    this.questionIds = [];
+    this.Queses = [];
+    this.allUsers = [];
+    this.resultLength = [];
     this.findUser();
   }
 
@@ -56,28 +61,34 @@ export class UserCenterComponent implements OnInit {
         break;
       }
     }
+    console.log("User id is: ", id);
     if(!findit){
       return;
     }
     this.questionIds = Follows;
+    console.log("Follows Info: " + this.questionIds);
     this.afs
       .collection<any>("questions")
       .snapshotChanges().subscribe(ret => this.setQuestions(ret));
   }
 
   setQuestions(myquestion){
+    if(this.myQuestions.length != 0){
+      this.myQuestions = [];
+    }
     for(var i = 0; i < myquestion.length; i++){
-      var id = myquestion.payload.id;
-      var title = myquestion.payload.data().title;
-      var description = myquestion.payload.data().description;
-      var user = myquestion.payload.data().user;
+      var id = myquestion[i].payload.doc.id;
+      var title = myquestion[i].payload.doc.data().title;
+      var description = myquestion[i].payload.doc.data().description;
+      var user = myquestion[i].payload.doc.data().user;
       for (var j = 0; j < this.questionIds.length; j++) {
-        if(new String(id).valueOf == new String(this.questionIds[j]).valueOf) {
+        if(new String(id).valueOf() == new String(this.questionIds[j]).valueOf()) {
           this.myQuestions.push({ id, title, description, user });
           break;
         }
       }
     }
+    console.log(this.myQuestions);
   }
 
   deleteQues4User(toDelete) {
@@ -96,8 +107,10 @@ export class UserCenterComponent implements OnInit {
       id = myUser[i].payload.doc.id;
       var UserEmail = myUser[i].payload.doc.data().UserEmail;
       Follows = myUser[i].payload.doc.data().Follows;
-      if(new String(UserEmail).valueOf() == new String(this.email).valueOf()){
+      console.log("email: " + UserEmail);
+      if(new String(UserEmail).valueOf() === new String(this.email).valueOf()){
         findit = true;
+        console.log("Find it");
         break;
       }
     }

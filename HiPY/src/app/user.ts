@@ -5,4 +5,5 @@ export class User{
     id: string;
     UserEmail: string;
     Follows: string[];
+    Likes: string;
 }

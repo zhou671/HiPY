@@ -13,12 +13,23 @@
 {{ myQuestion.user }}
 
 <button
+  *ngIf="!following"
   class=""
   title="follow this question"
   (click)="addQues2User()"  
 >
 follow this question
 </button>
+
+<button
+  *ngIf="following"
+  class=""
+  title="unfollow this question"
+  (click)="deleteQues4User()"  
+>
+unfollow this question
+</button>
+
 
 <a routerLink="/edit-question/{{ myQuestion.id }}">
   <button
@@ -40,13 +51,22 @@ follow this question
     {{ answer.likes}}
 
     <button
-      *ngIf="answer.user != currentUser"
+      *ngIf="answer.user != currentUser && !answer.liked"
       class=""
       title="likes this answer"
       (click)="addlikes(answer)"
     >
       likes 
-     </button>
+    </button>
+
+    <button
+      *ngIf="answer.user != currentUser && answer.liked"
+      class=""
+      title="unlikes this answer"
+      (click)="deletelikes(answer)"
+    >
+      unlikes 
+    </button>
 
     <button
       *ngIf="answer.user === currentUser"

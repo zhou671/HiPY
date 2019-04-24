@@ -105,6 +105,7 @@ export class PasswordlessAuthComponent implements OnInit {
       var id = myUser[i].payload.doc.id;
       var UserEmail = myUser[i].payload.doc.data().UserEmail;
       var Follows = myUser[i].payload.doc.data().Follows;
+      var Likes = myUser[i].payload.doc.data().Likes;
       if(new String(UserEmail).valueOf() == new String(this.newEmail).valueOf()){
         this.resultLength.push(0);
         console.log("Return ture when:" + UserEmail + " and " + this.newEmail);
@@ -112,10 +113,10 @@ export class PasswordlessAuthComponent implements OnInit {
       } else {
         console.log("Comparing:" + UserEmail + " and " + this.newEmail);
       }
-      this.allUsers.push({ id ,UserEmail,Follows});
+      this.allUsers.push({ id ,UserEmail,Follows, Likes});
     }
     if(this.resultLength.length != 0){
-      this.findUser();
+      //this.findUser();
       return;
     }
     console.log("Before is OK");
@@ -129,100 +130,7 @@ export class PasswordlessAuthComponent implements OnInit {
         console.log("Got an error: ", error);
       });
     console.log("After is OK");
-    this.findUser();
-  }
-
-  findUser() {
-    this.afs.collection<any>("users")
-      .snapshotChanges()
-      .subscribe(ret => this.setAllQues(ret));
-  }
-
-  setAllQues(myUser) {
-    var findit = false;
-    var Follows;
-    var id;
-    for(var i = 0; i < myUser.length; i++) {
-      id = myUser[i].payload.doc.id;
-      var UserEmail = myUser[i].payload.doc.data().UserEmail;
-      Follows = myUser[i].payload.doc.data().Follows;
-      if(new String(UserEmail).valueOf() == new String(this.email).valueOf()){
-        findit = true;
-        break;
-      }
-    }
-    if(!findit){
-      return;
-    }
-    this.questionIds = Follows;
-    this.afs
-      .collection<any>("questions")
-      .snapshotChanges().subscribe(ret => this.setQuestions(ret));
-  }
-
-  setQuestions(myquestion){
-    for(var i = 0; i < myquestion.length; i++){
-      var id = myquestion.payload.id;
-      var title = myquestion.payload.data().title;
-      var description = myquestion.payload.data().description;
-      var user = myquestion.payload.data().user;
-      for (var j = 0; j < this.questionIds.length; j++) {
-        if(new String(id).valueOf == new String(this.questionIds[j]).valueOf) {
-          this.myQuestions.push({ id, title, description, user });
-          break;
-        }
-      }
-    }
-  }
-
-  deleteQues4User(toDelete) {
-    this.todelete = toDelete;
-    this.afs.collection<any>("users")
-      .snapshotChanges()
-      .subscribe(ret => this.deleteFoll(ret));
-  }
-
-  deleteFoll(myUser) {
-    var findit = false;
-    var Follows;
-    var id;
-    for(var i = 0; i < myUser.length; i++)
-    {
-      id = myUser[i].payload.doc.id;
-      var UserEmail = myUser[i].payload.doc.data().UserEmail;
-      Follows = myUser[i].payload.doc.data().Follows;
-      if(new String(UserEmail).valueOf() == new String(this.email).valueOf()){
-        findit = true;
-        break;
-      }
-    }
-    if(!findit){
-      return;
-    }
-    findit = false;
-    for(var i = 0; i < Follows.length; i++){
-      if(new String(Follows[i]).valueOf() == new String(this.todelete.id).valueOf()){
-        findit = true;
-        break;
-      }
-    }
-    if(findit){
-      return;
-    }
-    Follows.array.forEach( (item, index) => {
-      if(item === this.todelete.id) Follows.splice(index, 1);
-    });
-    this.afs
-      .collection<any>("users")
-      .doc<any>(id)
-      .update({ Follows : Follows })
-      .then(function() {
-        console.log("Status saved!");
-      })
-      .catch(function(error) {
-        console.log("Got an error: ", error);
-      });
-    console.log("Reach Here");
+    //this.findUser();
   }
 
   logout() {

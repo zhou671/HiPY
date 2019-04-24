@@ -3,4 +3,5 @@ export class Answer {
   user: string;
   response: string;
   likes: number;
+  liked?:boolean;
 }

@@ -89,6 +89,7 @@ export class QuestionService {
       var id = myUser[i].payload.doc.id;
       var UserEmail = myUser[i].payload.doc.data().UserEmail;
       var Follows = myUser[i].payload.doc.data().Follows;
+      var Likes = myUser[i].payload.doc.data().Likes;
       if(new String(UserEmail).valueOf() == new String(this.newEmail).valueOf()){
         this.resultLength.push(0);
         console.log("Return ture when:" + UserEmail + " and " + this.newEmail);
@@ -96,7 +97,7 @@ export class QuestionService {
       } else {
         console.log("Comparing:" + UserEmail + " and " + this.newEmail);
       }
-      this.allUsers.push({ id ,UserEmail,Follows});
+      this.allUsers.push({ id ,UserEmail,Follows, Likes});
     }
     if(this.resultLength.length != 0){
       return;

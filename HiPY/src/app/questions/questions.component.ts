@@ -25,6 +25,9 @@ export class QuestionsComponent implements OnInit {
   }
 
   setCollection(mycollect) {
+    if(this.myQuestions.length != 0){
+      this.myQuestions = [];
+    }
     for (var i = 0; i < mycollect.length; i++) {
       var id = mycollect[i].payload.doc.id;
       var title = mycollect[i].payload.doc.data().title;
