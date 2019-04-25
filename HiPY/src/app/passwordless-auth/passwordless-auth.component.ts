@@ -20,22 +20,26 @@ export class PasswordlessAuthComponent implements OnInit {
   errorMessage: string;
   Queses: string[];
   allUsers: User[];
+  newLikes: string[];
   resultLength: number[];
   newEmail: string;
   todelete: Question;
 
-  constructor(public afAuth: AngularFireAuth, 
+  constructor(
+    public afAuth: AngularFireAuth,
     private router: Router,
-    private qs : QuestionService,
-    private afs : AngularFirestore
+    private qs: QuestionService,
+    private afs: AngularFirestore
   ) {}
 
   ngOnInit() {
     this.user = this.afAuth.authState;
-    
+
     const url = this.router.url;
     this.myQuestions = [];
     this.questionIds = [];
+    this.Queses = [];
+    this.newLikes = [];
     if (url.includes("signIn")) {
       this.confirmSignIn(url);
     }
@@ -84,8 +88,8 @@ export class PasswordlessAuthComponent implements OnInit {
     }
   }
 
-  addUser(email:string){
-    if(!email){
+  addUser(email: string) {
+    if (!email) {
       return;
     }
     console.log("Before oneUser");
@@ -94,35 +98,42 @@ export class PasswordlessAuthComponent implements OnInit {
     this.allUsers = [];
     this.Queses = [];
     this.resultLength = [];
-    this.afs.collection<any>("users")
+    this.afs
+      .collection<any>("users")
       .snapshotChanges()
       .subscribe(ret => this.setUsers(ret));
   }
 
   setUsers(myUser) {
     console.log("length is: ", myUser.length);
-    for(var i = 0; i < myUser.length; i++){
+    for (var i = 0; i < myUser.length; i++) {
       var id = myUser[i].payload.doc.id;
       var UserEmail = myUser[i].payload.doc.data().UserEmail;
       var Follows = myUser[i].payload.doc.data().Follows;
       var Likes = myUser[i].payload.doc.data().Likes;
-      if(new String(UserEmail).valueOf() == new String(this.newEmail).valueOf()){
+      if (
+        new String(UserEmail).valueOf() == new String(this.newEmail).valueOf()
+      ) {
         this.resultLength.push(0);
         console.log("Return ture when:" + UserEmail + " and " + this.newEmail);
         console.log("It set value " + this.resultLength);
       } else {
         console.log("Comparing:" + UserEmail + " and " + this.newEmail);
       }
-      this.allUsers.push({ id ,UserEmail,Follows, Likes});
+      this.allUsers.push({ id, UserEmail, Follows, Likes });
     }
-    if(this.resultLength.length != 0){
+    if (this.resultLength.length != 0) {
       //this.findUser();
       return;
     }
     console.log("Before is OK");
     this.afs
       .collection<any>("users")
-      .add({ UserEmail: this.newEmail, Follows: this.Queses })
+      .add({
+        UserEmail: this.newEmail,
+        Follows: this.Queses,
+        Likes: this.newLikes
+      })
       .then(function() {
         console.log("Status saved!");
       })
