@@ -34,8 +34,10 @@ Here are some features of HiPY:
 
 # Technology
 
--Cloud server: AWS
+-Cloud server: Firebase
 
--Database: Mango DB
+-Database: Firebase
 
 -Front End: Angular.js + HTML5
+
+-UI: Bootstrap + CSS
