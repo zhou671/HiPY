@@ -1,16 +1,6 @@
-div {
-    background: #c28e0e;
+.hi{
+    width: 100% !important;
 }
-p{
-    text-align: center;
-    color:#c28e0e;
-}
-#qTitle{
-    text-align: center;
-    color:blueviolet;
-}
-
-button{
-    text-align: center;
-    background: #c28e0e;
+.lol{
+    float: right;
 }

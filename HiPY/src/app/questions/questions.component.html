@@ -5,7 +5,7 @@
 
 <nav class="bg-light">
     <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand" href="/questions">HiPY</a>
+        <a class="navbar-brand text-info" href="/questions">HiPY</a>
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -22,7 +22,7 @@
             </li>
           </ul>
             <a routerLink="/search">
-              <button class="btn btn-outline-success align-items-right btn-md">
+              <button class="btn btn-outline-info align-items-right btn-md">
               Search
               </button>
             </a>
@@ -36,9 +36,19 @@
               Following
               <!-- <span class="badge badge-pill bg-light align-text-bottom">27</span> -->
             </a>
-            <a class="nav-link" href="#">README</a>
-            <a routerLink="/create" class="align-items-right">
-              <button class="btn btn-outline-secondary align-items-right btn-md">
+            <a class="nav-link" href="assets/README.md">README</a>
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            <a routerLink="/create">
+              <button class="btn btn-outline-info align-items-right btn-md">
                   Create
                 </button>
               </a>
@@ -47,18 +57,31 @@
 <!--This is the function to display all the questions-->
         <main role="main" class="container">
             <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
-              <img class="mr-3" src="assets/favicon.ico" alt="" width="48" height="48">
+                <!-- <a class="py-0" href="#">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto text-purple">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+                      <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+                      <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+                      <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+                      <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+                      <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+
+                  </a> -->
+              <img class="mr-3" src="http://pic3.16pic.com/00/23/49/16pic_2349185_b.jpg" alt="" width="48" height="48">
+              <br/>
               <div class="lh-100">
-                <h5 class="mb-0 text-secondary lh-100">HiPY</h5>
-                <small class="mb-0 text-secondary lh-100">Since 2019</small>
+                
+                <h5 class="mb-0 text-secondary lh-100"> HiPY</h5>
+                <small class="mb-0 text-secondary lh-100"> Since 2019</small>
               </div>
             </div>
 
             <div class="my-3 p-3 bg-white rounded box-shadow">
-              <h5 class="border-bottom border-gray pb-3 mb-2">Recent updates</h5>
+              <h5 class="border-bottom border-gray text-secondary pb-3 mb-2">Recent updates</h5>
               <ul>
                   <li *ngFor="let question of myQuestions">
-              <div class="media text-muted pt-4">
+                  <div class="media text-muted pt-4">
                 <img src="assets/star.jpg" alt="" width="48" height="48" class="mr-2 rounded ">
                 <p class="media-body pb-4 mb-3 medium lh-125 border-bottom border-gray align-items-left">
                   <a  class = "titleId" href="/details/{{ question.id }}">
@@ -67,12 +90,16 @@
                   {{ question.description }}
                 </p>
                 <div class="d-flex justify-content-between w-3">
-                    <a href="#">Follow</a>
+                    <a href="/details/{{ question.id }}">
+                      <button class="btn btn-outline-secondary align-items-right btn-md">
+                          View
+                          </button>
+                    </a>
                   </div>
               </div>
-            </li>
-          </ul>
-            </div>
+              </li>
+            </ul>
+          </div>
             </main>
 
 

@@ -3,28 +3,84 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<p>
-  create-question works!
-</p>
+<nav class="bg-light">
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand text-info" href="/questions">HiPY</a>
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/questions">Main Page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user-center">User Center</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Change Theme</a>
+            </li>
+          </ul>
+            <a routerLink="/search">
+              <button class="btn btn-outline-info align-items-right btn-md">
+              Search
+              </button>
+            </a>
+        </div>
+      </nav>
 
-<div>
-  <label>
-    Question Title
-    <input #qTitle />
-  </label>
+      <div class="nav-scroller bg-white box-shadow">
+          <nav class="nav nav-underline">
+            <a class="nav-link active" href="">Main Page</a>
+            <a class="nav-link" href="/user-center">
+              Following
+              <!-- <span class="badge badge-pill bg-light align-text-bottom">27</span> -->
+            </a>
+            <a class="nav-link" href="assets/README.md">README</a>
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            <a routerLink="/create">
+              <button class="btn btn-outline-info align-items-right btn-md">
+                  Create
+                </button>
+              </a>
+          </nav>
+        </div>
 
-  <label>
-    Question Description
-    <input #qDesc />
-  </label>
-
-  <a routerLink="/questions">
-    <button
-      (click)="
-        add('', qTitle.value, qDesc.value); qTitle.value = ''; qDesc.value = ''
-      "
-    >
-      Submit
-    </button>
-  </a>
-</div>
+        <!-- the question part -->
+        <main role="main" class="container bg-white box-shadow">
+            <div class="jumbotron bg-white text-secondary align-items-center" width= "100%">
+              <h5 class="h2 text-secondary">Question Title</h5>
+              <label class="hi" >
+                  
+                  <div class="form-group align-items-center ">
+                      <textarea #qTitle class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3" spellcheck="false"></textarea>
+                    </div>
+                </label>
+                <h5 class="h2 text-secondary">Question Description</h5>
+                <label class="hi" >
+                  
+                  <div class="form-group align-items-center ">
+                      <textarea #qDesc class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3" spellcheck="false"></textarea>
+                    </div>
+                </label>
+                <br />
+                <br />
+                <a routerLink="/questions">
+                  <button (click)="
+                  add('', qTitle.value, qDesc.value); qTitle.value = ''; qDesc.value = ''
+                "
+                 class="lol btn btn-outline-info btn-md">
+                    Submit
+                  </button>
+                </a>
+            </div>
+          </main>

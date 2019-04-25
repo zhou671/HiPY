@@ -9,7 +9,14 @@
 .align-items-left{
     float: left !important;
 }
-
+.bg-head{
+    position: right !important;
+    background-color: rgb(122, 72, 168) !important;
+    /* background-color:  rgba(161, 156, 160, 0.363) !important; */
+}
+.text-purple{
+    color: white !important;
+}
 /*
 .site-header{
     background-color: #5bc0de !important;
