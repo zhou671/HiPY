@@ -6,6 +6,10 @@
     float: right !important;
   /*  background-color: #5bc0de;*/
 }
+.align-items-left{
+    float: left !important;
+}
+
 /*
 .site-header{
     background-color: #5bc0de !important;
@@ -13,3 +17,9 @@
 .container{
     background-color: #5bc0de !important;
 }*/
+.titleId{
+    color: rgba(31, 26, 26, 0.616) !important;
+}
+.titleId:hover{
+    color: rgba(31, 26, 26, 0.842) !important;
+}
