@@ -8,7 +8,7 @@
         <a class="navbar-brand text-info" href="/questions">HiPY</a>
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="/questions">Main Page</a>
             </li>
             <li class="nav-item">
@@ -17,9 +17,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/login">Login</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Change Theme</a>
-            </li>
+            
           </ul>
             <a routerLink="/search">
               <button class="btn btn-outline-info align-items-right btn-md">
@@ -31,7 +29,7 @@
 
       <div class="nav-scroller bg-white box-shadow">
           <nav class="nav nav-underline">
-            <a class="nav-link active" href="">Main Page</a>
+            <a class="nav-link" href="">Main Page</a>
             <a class="nav-link" href="/user-center">
               Following
               <!-- <span class="badge badge-pill bg-light align-text-bottom">27</span> -->
@@ -78,7 +76,7 @@
 
           <main role="main" class="container">
               <div class="my-3 p-3 bg-white rounded box-shadow">
-                <h5 class="border-bottom border-gray text-secondary pb-3 mb-2">Following Posts</h5>
+                <h5 class="border-bottom border-gray text-secondary pb-3 mb-2">Questions Matched</h5>
                 <ul>
                     <li *ngFor="let question of searchedQuestions">
                     <div class="media text-muted pt-4">
