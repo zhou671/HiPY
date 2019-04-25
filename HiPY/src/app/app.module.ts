@@ -15,6 +15,7 @@ import { EditAnswerComponent } from "./edit-answer/edit-answer.component";
 import { EditQuestionComponent } from "./edit-question/edit-question.component";
 import { FormsModule } from "@angular/forms";
 import { PasswordlessAuthComponent } from './passwordless-auth/passwordless-auth.component';
+import { UserCenterComponent } from './user-center/user-center.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PasswordlessAuthComponent } from './passwordless-auth/passwordless-auth
     SearchComponent,
     EditAnswerComponent,
     EditQuestionComponent,
-    PasswordlessAuthComponent
+    PasswordlessAuthComponent,
+    UserCenterComponent
   ],
   imports: [
     BrowserModule,

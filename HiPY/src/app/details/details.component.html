@@ -2,40 +2,127 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<nav class="bg-light">
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="/questions">HiPY</a>
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/questions">Main Page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user-center">User Center</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Change Theme</a>
+            </li>
+          </ul>
+            <a routerLink="/search">
+              <button class="btn btn-outline-success align-items-right btn-md">
+              Search
+              </button>
+            </a>
+        </div>
+      </nav>
 
-<h2>Title</h2>
-<p><!--
-{{ myQuestion.id }}
-<br />-->
-{{ myQuestion.title }}
+      <div class="nav-scroller bg-white box-shadow">
+          <nav class="nav nav-underline">
+            <a class="nav-link" href="">Main Page</a>
+            <a class="nav-link" href="/user-center">
+              Following
+              <span class="badge badge-pill bg-light align-text-bottom">27</span>
+            </a>
+            <a class="nav-link" href="#">README</a>
+            <a routerLink="/create" class="align-items-right">
+              <button class="btn btn-outline-secondary align-items-right btn-md">
+                  Create
+                </button>
+              </a>
+          </nav>
+        </div>
 <br />
-{{ myQuestion.description }}
-<br />
-{{ myQuestion.user }}
-</p>
+<!--here is the information about the questions-->
+<main role="main" class="container bg-white box-shadow">
+    <div class="jumbotron bg-white">
+      <h2>{{ myQuestion.title }}</h2>
+      <p class="lead">{{ myQuestion.description }}</p>
+      <p class="align-items-right">
+          @{{ myQuestion.user }}
+        </p>
+        <br />
+        <br />
+        <button  class="btn btn-outline-secondary align-items-left btn-md"
+        *ngIf="!following"
+        
+        title="follow this question"
+        (click)="addQues2User()"  
+      >
+      follow this question
+      </button>
+      
+      <button  class="btn btn-outline-secondary align-items-left btn-md"
+        *ngIf="following"
+        
+        title="unfollow this question"
+        (click)="deleteQues4User()"  
+      >
+      unfollow this question
+      </button>
+      
+      <a routerLink="/edit-question/{{ myQuestion.id }}">
+        <button
+          *ngIf="myQuestion.user === currentUser"
+          class="edit btn btn-outline-secondary align-items-right btn-md"
+          title="edit question"
+        >
+          edit
+        </button>
+      </a>
+    </div>
+  </main>
 
-<a routerLink="/edit-question/{{ myQuestion.id }}">
-  <button
-    *ngIf="myQuestion.user === currentUser"
-    class="edit"
-    title="edit question"
-  >
-    edit
-  </button>
-</a>
+<!--answers-->
 
-<h2>Answers</h2>
-<ul id="answerlist">
-  <li *ngFor="let answer of myAnswers">
-    <p>
-    {{ answer.user }}
-    <br />
-    {{ answer.response }}
-  </p>
+<main role="main" class="container">
+<div class="my-5 p-5 bg-white rounded box-shadow">
+    <h5 class="border-bottom border-gray pb-3 mb-0">Answers</h5>
+    <ul id="answerlist">
+        <li *ngFor="let answer of myAnswers">
+            <div class="media text-muted pt-4">
+                <img src="assets/star.jpg" alt="" width="48" height="48" class="mr-2 rounded">
+                <div class="media-body pb-4 mb-4 medium lh-125 border-bottom border-gray">
+                    <span class="d-block">@{{ answer.user }} </span>
+                  <div class=" justify-content-between  w-100">
+                    <strong class="text-gray-dark">{{ answer.response }}</strong>
+                  </div>
+                  
+                  <a class="d-block align-items-left">{{ answer.likes}} like this answer</a>
+                </div>
+            
+    <button
+      *ngIf="answer.user != currentUser && !answer.liked"
+      class="btn btn-outline-secondary align-items-left btn-md"
+      title="likes this answer"
+      (click)="addlikes(answer)"
+    >
+    Like
+    </button>
+
+    <button
+      *ngIf="answer.user != currentUser && answer.liked"
+      class="btn btn-outline-secondary align-items-left btn-md"
+      title="unlikes this answer"
+      (click)="deletelikes(answer)"
+    >
+    Unlike 
+    </button>
 
     <button
       *ngIf="answer.user === currentUser"
-      class="delete"
+      class="delete btn btn-outline-secondary align-items-left btn-md"
       title="delete answer"
       (click)="deleteanswer(answer)"
     >
@@ -45,17 +132,27 @@
     <a routerLink="/edit-answer/{{ myQuestion.id }}/{{ answer.id }}">
       <button
         *ngIf="answer.user === currentUser"
-        class="edit"
+        class="edit btn btn-outline-secondary align-items-left btn-md"
         title="edit answer"
       >
         edit
       </button>
     </a>
+  </div>          
   </li>
 </ul>
+    <a routerLink="/create-answer/{{ myQuestion.id }}" > 
+      <button
+      class=" btn btn-outline-secondary btn-sm text-right mt-3 align-items-right"
+      >
+        Add answer
+      </button>
+    </a>
+  </div>
+  <br />
+  <br />
+</main>
 
-<a routerLink="/create-answer/{{ myQuestion.id }}">
-  <button>
-    Add answer
-  </button>
-</a>
+
+
+</nav>
