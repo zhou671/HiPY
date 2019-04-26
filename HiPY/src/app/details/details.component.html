@@ -3,9 +3,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<nav class="bg-light">
-    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand text-info" href="/questions">HiPY</a>
+<nav>
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+        <a class="navbar-brand texta-purple" href="/questions">HiPY</a>
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -19,39 +19,19 @@
             </li>
             
           </ul>
+          <a routerLink="/create">
+            <button class=" btn btn-outline-secondary align-items-right btn-md">
+                Create
+              </button>
+            </a>
+            &nbsp;&nbsp;
             <a routerLink="/search">
-              <button class="btn btn-outline-info align-items-right btn-md">
+              <button class="btn btn-outline-secondary align-items-right btn-md">
               Search
               </button>
             </a>
         </div>
       </nav>
-
-      <div class="nav-scroller bg-white box-shadow">
-          <nav class="nav nav-underline">
-            <a class="nav-link" href="/questions">Main Page</a>
-            <a class="nav-link" href="/user-center">
-              Following
-              <!-- <span class="badge badge-pill bg-light align-text-bottom">27</span> -->
-            </a>
-            <a class="nav-link" href="assets/README.md">README</a>
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-            <a routerLink="/create">
-              <button class="btn btn-outline-info align-items-right btn-md">
-                  Create
-                </button>
-              </a>
-          </nav>
-        </div>
 <br />
 
 <!--here is the information about the questions-->
@@ -70,7 +50,7 @@
         title="follow this question"
         (click)="addQues2User()"  
       >
-      follow this question
+      Follow this question
       </button>
       
       <button  class="btn btn-outline-secondary align-items-left btn-md"
@@ -79,7 +59,7 @@
         title="unfollow this question"
         (click)="deleteQues4User()"  
       >
-      unfollow this question
+      Unfollow this question
       </button>
       
       <a routerLink="/edit-question/{{ myQuestion.id }}">
@@ -88,7 +68,7 @@
           class="edit btn btn-outline-secondary align-items-right btn-md"
           title="edit question"
         >
-          edit
+          Edit
         </button>
       </a>
     </div>
@@ -135,7 +115,7 @@
         class="edit btn btn-outline-secondary align-items-left btn-sm"
         title="edit answer"
       >
-        edit
+        Edit
       </button>
     </a>
     <button
@@ -144,7 +124,7 @@
       title="delete answer"
       (click)="deleteanswer(answer)"
     >
-      delete
+      Delete
     </button>
   </div>          
   </li>
