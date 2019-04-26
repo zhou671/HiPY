@@ -1,16 +1,56 @@
-<p>
-  create-answer works!
-</p>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<div>
-  <label>
-    Your answer
-    <input #aRes />
-  </label>
+<nav >
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+        <a class="navbar-brand texta-purple" href="/questions">HiPY</a>
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/questions">Main Page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user-center">User Center</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+          </ul>
+          <a routerLink="/create">
+            <button class=" btn btn-outline-secondary align-items-right btn-md">
+                Create
+              </button>
+            </a>
+            &nbsp;&nbsp;
+            <a routerLink="/search">
+              <button class="btn btn-outline-secondary align-items-right btn-md">
+              Search
+              </button>
+            </a>
+        </div>
+      </nav>
 
-  <a routerLink="/details/{{ questionNumber }}">
-    <button (click)="add('', aRes.value); aRes.value = ''">
-      Submit
-    </button>
-  </a>
-</div>
+
+        <!-- the answer part -->
+        <main role="main" class="container bg-white box-shadow">
+            <div class="jumbotron bg-white text-secondary align-items-center" width= "100%">
+              <h2 class="h2 text-secondary">Your answer</h2>
+              <label class="hi" >
+                  
+                  <div class="form-group align-items-center ">
+                      <textarea #aRes class="form-control form-control-lg my-3 p-5 lh-100" id="exampleFormControlTextarea1" rows="3" spellcheck="false"></textarea>
+                    </div>
+                </label>
+
+                <br />
+                <br />
+                <a routerLink="/details/{{ questionNumber }}">
+                  <button (click)="add('', aRes.value); aRes.value = ''" class="lol btn btn-outline-secondary btn-md">
+                    Submit
+                  </button>
+                </a>
+            </div>
+          </main>
+

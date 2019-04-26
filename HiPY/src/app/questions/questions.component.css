@@ -1,8 +1,32 @@
 
 .d-flex,.card,.card-body{
-    background-color: #14141f !important;
+    background-color: white;
 }
 .align-items-right{
     float: right !important;
-    background-color: #c28e0e;
+  /*  background-color: #5bc0de;*/
+}
+.align-items-left{
+    float: left !important;
+}
+.bg-head{
+    position: right !important;
+    background-color: rgb(122, 72, 168) !important;
+    /* background-color:  rgba(161, 156, 160, 0.363) !important; */
+}
+.text-purple{
+    color: white !important;
+}
+/*
+.site-header{
+    background-color: #5bc0de !important;
+}
+.container{
+    background-color: #5bc0de !important;
+}*/
+.titleId{
+    color: rgba(31, 26, 26, 0.616) !important;
+}
+.titleId:hover{
+    color: rgba(31, 26, 26, 0.842) !important;
 }

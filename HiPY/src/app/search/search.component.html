@@ -1,21 +1,81 @@
-<p>
-  search works!
-</p>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<div>
-  <label> Search by Title <input #qTitle /> </label>
+<nav>
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+        <a class="navbar-brand texta-purple" href="/questions">HiPY</a>
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/questions">Main Page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user-center">User Center</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            
+          </ul>
+          <a routerLink="/create">
+            <button class=" btn btn-outline-secondary align-items-right btn-md">
+                Create
+              </button>
+            </a>
+            &nbsp;&nbsp;
+            <a routerLink="/search">
+              <button class="btn btn-outline-secondary align-items-right btn-md">
+              Search
+              </button>
+            </a>
+        </div>
+      </nav>
+                <!-- the search part -->
+        <main role="main" class="container bg-white box-shadow">
+            <div class="jumbotron bg-white text-secondary align-items-center" width= "100%">
+              <h2 class="h2 text-secondary">Search by Title</h2>
+              <label class="hi" >
+                  
+                  <div class="form-group align-items-center ">
+                      <textarea #qTitle  class="form-control form-control-lg my-3 p-5 lh-100" id="exampleFormControlTextarea1" rows="3" spellcheck="false"></textarea>
+                    </div>
+                </label>
 
-  <button (click)="prepareSearch(qTitle.value); qTitle.value = ''">
-    Search
-  </button>
-</div>
+                <br />
+                <br />
+                <a routerLink="/details/{{ questionNumber }}">
+                  <button (click)="prepareSearch(qTitle.value); qTitle.value = ''" class="lol btn btn-outline-secondary btn-md">
+                    Submit
+                  </button>
+                </a>
+            </div>
+          </main>
 
-<ul>
-  <li *ngFor="let question of searchedQuestions">
-    <a routerLink="/details/{{ question.id }}">
-      title: {{ question.title }}
-      <br />
-      description: {{ question.description }}
-    </a>
-  </li>
-</ul>
+
+          <main role="main" class="container">
+              <div class="my-3 p-3 bg-white rounded box-shadow">
+                <h5 class="border-bottom border-gray text-secondary pb-3 mb-2">Questions Matched</h5>
+                <ul>
+                    <li *ngFor="let question of searchedQuestions">
+                    <div class="media text-muted pt-4">
+                  <img src="assets/star.jpg" alt="" width="48" height="48" class="mr-2 rounded ">
+                  <p class="media-body pb-4 mb-3 medium lh-125 border-bottom border-gray align-items-left">
+                    <a  class = "titleId" href="/details/{{ question.id }}">
+                    <strong class="d-block text-gray-dark">{{ question.title }}</strong>
+                    </a>
+                    {{ question.description }}
+                  </p>
+                  <div class="d-flex justify-content-between w-3">
+                      <a href="/details/{{ question.id }}">
+                        <button class="btn btn-outline-secondary align-items-right btn-md">
+                            View
+                            </button>
+                      </a>
+                    </div>
+                </div>
+                </li>
+              </ul>
+            </div>
+              </main>

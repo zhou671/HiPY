@@ -1,0 +1,15 @@
+
+.d-flex,.card,.card-body{
+    background-color: white;
+}
+.align-items-right{
+    float: right !important;
+  /*  background-color: #5bc0de;*/
+}
+/*
+.site-header{
+    background-color: #5bc0de !important;
+}
+.container{
+    background-color: #5bc0de !important;
+}*/
