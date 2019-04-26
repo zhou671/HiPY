@@ -25,6 +25,9 @@ body {
     padding-top: 56px;
 }
 */
+html,body{
+background-image: url("assets/purpleBG.jpg") !important;
+}
 /* to remove the bullet from li*/
 .align-items-right{
     float: right !important;
@@ -121,8 +124,14 @@ body {
 
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
-.box-shadow { box-shadow: 1rem .75rem 1rem rgba(0, 0, 0, .05); }
+.box-shadow { box-shadow: .75rem .25rem .75rem rgba(0, 0, 0, .05); }
 
 .lh-100 { line-height: 1; }
 .lh-125 { line-height: 1.25; }
 .lh-150 { line-height: 1.5; }
+.texta-purple{
+  color: rgb(158, 109, 171) !important;
+}
+.btng-purple{
+  background: rgb(158, 109, 171) !important;
+}
